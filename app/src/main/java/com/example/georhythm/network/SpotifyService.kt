@@ -64,12 +64,6 @@ class SpotifyService(context: Context) {
 
     /** Procesa georhythm://callback?code=...&state=... Devuelve null si todo fue bien, o el error. */
     suspend fun handleRedirect(uri: Uri): String? {
-        val result = handleRedirectInternal(uri)
-        android.util.Log.w("GeoSpotify", "redirect keys=${uri.queryParameterNames} error=${uri.getQueryParameter("error")} -> ${result ?: "OK"}")
-        return result
-    }
-
-    private suspend fun handleRedirectInternal(uri: Uri): String? {
         uri.getQueryParameter("error")?.let {
             return if (it == "access_denied") "Cancelaste el permiso en Spotify." else "Spotify: $it"
         }
@@ -86,7 +80,6 @@ class SpotifyService(context: Context) {
             "code_verifier" to verifier
         )
         if (!res.ok) {
-            android.util.Log.w("GeoSpotify", "token exchange HTTP ${res.code}: ${res.body.take(300)}")
             val err = runCatching { JSONObject(res.body).optString("error_description") }.getOrNull()
             return if (res.code == -1) "Sin conexión a internet." else "No se pudo conectar Spotify: ${err ?: res.code}"
         }
