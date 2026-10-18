@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.example.georhythm.util.GeoMath
 import org.maplibre.android.geometry.LatLng
 import kotlin.math.roundToInt
 
@@ -172,11 +173,8 @@ class WalkTracker {
         fun cadenceFor(kmh: Float): Int =
             if (kmh < 1f) 0 else (64 + 11 * kmh).roundToInt().coerceAtMost(185)
 
-        fun distance(a: LatLng, b: LatLng): Float {
-            val out = FloatArray(1)
-            Location.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude, out)
-            return out[0]
-        }
+        fun distance(a: LatLng, b: LatLng): Float =
+            GeoMath.distanceMeters(a.latitude, a.longitude, b.latitude, b.longitude).toFloat()
 
         private fun nearestPoint(points: List<LatLng>, here: LatLng): Pair<Int, Float> {
             var best = 0
