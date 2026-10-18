@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.georhythm.ui.theme.LocalGeoColors
+import com.example.georhythm.util.GeoMath
 import org.maplibre.android.geometry.LatLng
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -37,9 +38,7 @@ fun isLocationInPastoRegion(location: Location?): Boolean {
 /** Distancia geodésica real (km) desde el GPS del usuario; null si no hay ubicación válida. */
 fun calculateDistanceKm(userLoc: Location?, target: LatLng): Float? {
     if (!isLocationInPastoRegion(userLoc)) return null
-    val out = FloatArray(1)
-    Location.distanceBetween(userLoc!!.latitude, userLoc.longitude, target.latitude, target.longitude, out)
-    return out[0] / 1000f
+    return (GeoMath.distanceMeters(userLoc!!.latitude, userLoc.longitude, target.latitude, target.longitude) / 1000).toFloat()
 }
 
 fun formatDistanceText(km: Float): String =
