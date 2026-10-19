@@ -52,6 +52,10 @@ android {
             }
         }
     }
+    testOptions {
+        // Las clases de Android devuelven valores por defecto en pruebas JVM en vez de lanzar excepción
+        unitTests.isReturnDefaultValues = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
