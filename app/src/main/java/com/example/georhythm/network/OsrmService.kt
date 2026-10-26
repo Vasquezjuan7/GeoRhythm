@@ -34,7 +34,7 @@ object OsrmService {
         return runCatching { parse(JSONObject(res.body), dest, destName, waypoints, routeId) }.getOrNull()
     }
 
-    private fun parse(
+    internal fun parse(
         json: JSONObject,
         dest: LatLng,
         destName: String,
@@ -91,7 +91,7 @@ object OsrmService {
         )
     }
 
-    private fun instruction(type: String, modifier: String, street: String, target: String): String {
+    internal fun instruction(type: String, modifier: String, street: String, target: String): String {
         val on = if (street.isNotEmpty()) " por $street" else ""
         val dir = when (modifier) {
             "left" -> "Gira a la izquierda"
