@@ -200,10 +200,6 @@ class MusicPlayerEngine(
         applyTempo()
     }
 
-    /** BPM efectivo del tema más cercano a la cadencia (permite medio y doble tiempo). */
-    private fun effectiveBpm(bpm: Int, target: Int): Int =
-        listOf(bpm, bpm * 2, bpm / 2).minBy { abs(it - target) }
-
     private fun applyTempo() {
         if (!rhythmSyncEnabled || currentSource != MusicSource.AUDIUS) {
             if (playbackRate != 1f) setRate(1f)
@@ -214,8 +210,7 @@ class MusicPlayerEngine(
             setRate(1f)
             return
         }
-        val eff = effectiveBpm(bpm, cadenceSpm)
-        val rate = (cadenceSpm.toFloat() / eff).coerceIn(0.92f, 1.10f)
+        val rate = TempoMath.playbackRate(bpm, cadenceSpm)
         if (abs(rate - playbackRate) >= 0.01f) setRate(rate)
     }
 
@@ -237,9 +232,9 @@ class MusicPlayerEngine(
     /** Elige la canción cuyo BPM se ajusta mejor a la cadencia actual. */
     private fun pickTrackForPace(candidates: List<AudiusTrack>): AudiusTrack? {
         val target = if (cadenceSpm >= PaceTier.STROLL.minSpm) cadenceSpm else 95
-        return candidates
-            .filter { it.bpm != null && it.id !in recentlyPlayed && it.id != currentAudiusTrack?.id }
-            .sortedBy { abs(effectiveBpm(it.bpm!!, target) - target) }
+        return TempoMath.rankByFit(
+            candidates.filter { it.id !in recentlyPlayed && it.id != currentAudiusTrack?.id }, target
+        )
             .take(5)
             .randomOrNull()
     }
@@ -282,9 +277,7 @@ class MusicPlayerEngine(
             MusicSource.AUDIUS -> {
                 val bpm = trackBpm ?: return
                 if (cadenceSpm < PaceTier.STROLL.minSpm) { mismatchSinceMs = 0; return }
-                val eff = effectiveBpm(bpm, cadenceSpm)
-                val mismatch = abs(eff - cadenceSpm).toFloat() / eff > 0.14f // fuera del rango ajustable
-                if (!mismatch) { mismatchSinceMs = 0; return }
+                if (!TempoMath.isMismatch(bpm, cadenceSpm)) { mismatchSinceMs = 0; return }
                 if (mismatchSinceMs == 0L) mismatchSinceMs = now
                 if (now - mismatchSinceMs > 20_000 && progressMs > 30_000) {
                     mismatchSinceMs = 0
