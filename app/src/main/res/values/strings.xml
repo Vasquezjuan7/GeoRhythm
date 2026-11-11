@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GeoRhythm</string>
+    <string name="tab_map">Explorar</string>
+    <string name="tab_routes">Rutas</string>
+    <string name="tab_music">Tu Música</string>
+    <string name="tab_profile">Caminante</string>
+    <string name="nav_start">Iniciar Caminata</string>
+    <string name="nav_stop">Finalizar</string>
+    <string name="nav_pause">Pausar</string>
+    <string name="nav_resume">Reanudar</string>
+    <string name="cadence_format">%1$d pasos/min</string>
+    <string name="distance_km_format">%1$.2f km</string>
+    <string name="speed_kmh_format">%1$.1f km/h</string>
 </resources>
