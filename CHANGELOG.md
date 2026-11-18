@@ -1,5 +1,15 @@
 # Registro de Cambios (CHANGELOG)
 
+## [2.2.0] - 2026-11-18
+### Añadido
+- Soporte multilingüe completo (español e inglés) para turistas internacionales.
+- Flujo automatizado de CI/CD con GitHub Actions para compilación y pruebas.
+- Documentación integral de arquitectura (`docs/ARCHITECTURE.md`) y referencias de API.
+- Cola de sincronización offline (`SyncQueue`) para registrar caminatas sin conexión.
+- Selector inteligente de listas de reproducción de Spotify según cadencia.
+- Transiciones suaves de audio con algoritmo de igual potencia (`CrossfadeMath`).
+- Tokens semánticos de diseño y retroalimentación háptica táctil en giros.
+
 ## [2.1.0] - 2026-11-12
 ### Añadido
 - Resiliencia de red con clase sellada `NetworkResult` y política de reintentos exponenciales.
