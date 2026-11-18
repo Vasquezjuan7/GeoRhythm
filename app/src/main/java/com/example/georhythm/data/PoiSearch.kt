@@ -16,9 +16,9 @@ object PoiSearch {
         return nt.contains(nq)
     }
 
-    fun filterPlaces(places: List<PlaceOfInterest>, query: String, category: PoiCategory? = null): List<PlaceOfInterest> {
+    fun filterPlaces(places: List<PointOfInterest>, query: String, category: PoiCategory? = null): List<PointOfInterest> {
         return places.filter { poi ->
-            matches(query, poi.name) || matches(query, poi.description)
+            (matches(query, poi.name) || matches(query, poi.description)) && (category == null || poi.category == category)
         }
     }
 }
