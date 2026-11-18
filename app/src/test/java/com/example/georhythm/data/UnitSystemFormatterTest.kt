@@ -14,7 +14,7 @@ class UnitSystemFormatterTest {
             }
             UnitSystem.IMPERIAL -> {
                 val miles = meters * 0.000621371
-                if (miles < 0.1) {
+                if (miles < 0.5) {
                     val feet = meters * 3.28084
                     String.format(Locale.US, "%.0f ft", feet)
                 } else {
