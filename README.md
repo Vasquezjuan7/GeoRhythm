@@ -2,6 +2,16 @@
 
 **Sonic Journey Navigation**: app Android para caminar San Juan de Pasto (Nariño, Colombia) al ritmo de tu música. La app mide tu velocidad con el GPS, calcula tu cadencia de pasos y adapta la música en tiempo real, mientras te guía a pie por rutas históricas con audio-guía.
 
+## Descargar
+
+[![Descargar APK](https://img.shields.io/github/v/release/Vasquezjuan7/GeoRhythm?label=Descargar%20APK&logo=android&color=3DDC84)](https://github.com/Vasquezjuan7/GeoRhythm/releases/latest)
+
+1. Entra en **[Releases → última versión](https://github.com/Vasquezjuan7/GeoRhythm/releases/latest)** desde el celular y descarga el archivo `GeoRhythm-vX.Y.Z.apk`.
+2. Ábrelo y, si Android lo pide, permite **instalar apps de origen desconocido** para tu navegador o gestor de archivos.
+3. Requiere **Android 7.0 (API 24) o superior**. Al abrirla, concede los permisos de ubicación para medir tu ritmo y guiarte.
+
+> El APK está firmado con una clave de depuración: si tienes instalada una versión compilada en otro equipo, desinstálala antes.
+
 ## Funciones
 
 - **Mapa vectorial 3D** (MapLibre + MapTiler) con modo día/noche, capas (calles, satélite, relieve) y lugares de Pasto con coordenadas verificadas en OpenStreetMap.
