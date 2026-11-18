@@ -9,8 +9,8 @@ class PoiCategoryTest {
     @Test
     fun `todas las categorias tienen un nombre legible para la interfaz`() {
         for (cat in PoiCategory.entries) {
-            assertNotNull(cat.displayName)
-            assertEquals(false, cat.displayName.isBlank())
+            assertNotNull(cat.label)
+            assertEquals(false, cat.label.isBlank())
         }
     }
 }
