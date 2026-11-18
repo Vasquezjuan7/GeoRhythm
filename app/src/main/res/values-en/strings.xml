@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GeoRhythm</string>
+    <string name="tab_map">Explore</string>
+    <string name="tab_routes">Routes</string>
+    <string name="tab_music">Your Music</string>
+    <string name="tab_profile">Walker</string>
+    <string name="nav_start">Start Walk</string>
+    <string name="nav_stop">Finish</string>
+    <string name="nav_pause">Pause</string>
+    <string name="nav_resume">Resume</string>
+    <string name="cadence_format">%1$d steps/min</string>
+    <string name="distance_km_format">%1$.2f km</string>
+    <string name="speed_kmh_format">%1$.1f km/h</string>
+</resources>

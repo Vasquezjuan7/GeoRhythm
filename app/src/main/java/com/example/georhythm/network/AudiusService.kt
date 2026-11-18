@@ -47,7 +47,7 @@ object AudiusService {
         return parse(data)
     }
 
-    private fun parse(arr: JSONArray): List<AudiusTrack> {
+    internal fun parse(arr: JSONArray): List<AudiusTrack> {
         val out = ArrayList<AudiusTrack>(arr.length())
         for (i in 0 until arr.length()) {
             val t = arr.optJSONObject(i) ?: continue
