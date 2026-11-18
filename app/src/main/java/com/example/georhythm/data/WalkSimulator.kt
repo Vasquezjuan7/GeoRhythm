@@ -24,7 +24,7 @@ object WalkSimulator {
                 lon += sin((i + 1).toDouble()) * 0.00002
             }
             val time = baseTime + i * 2000L
-            list.add(GpsFix(lat, lon, profile.averageSpeedKmh / 3.6f, 5.0f, time))
+            list.add(GpsFix(lat, lon, accuracyM = 5.0f, speedMps = profile.averageSpeedKmh / 3.6f, timeMs = time))
         }
         return list
     }
