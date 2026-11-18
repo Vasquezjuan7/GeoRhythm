@@ -16,10 +16,10 @@ class GpxExporterTest {
             )
         )
         val xml = GpxExporter.toXml(track)
-        assertTrue(xml.contains("<?xml version="1.0" encoding="UTF-8"?>"))
-        assertTrue(xml.contains("<gpx version="1.1""))
+        assertTrue(xml.contains("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
+        assertTrue(xml.contains("<gpx version=\"1.1\""))
         assertTrue(xml.contains("<name>Ruta Centro Histórico Pasto</name>"))
-        assertTrue(xml.contains("<trkpt lat="1.213600" lon="-77.281100">"))
+        assertTrue(xml.contains("<trkpt lat=\"1.213600\" lon=\"-77.281100\">"))
         assertTrue(xml.contains("<ele>2527.0</ele>"))
         assertTrue(xml.contains("<georhythm:cadence>115</georhythm:cadence>"))
     }

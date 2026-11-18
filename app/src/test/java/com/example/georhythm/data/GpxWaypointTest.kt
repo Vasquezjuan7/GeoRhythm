@@ -16,7 +16,7 @@ class GpxWaypointTest {
             )
         )
         val xml = GpxExporter.toXml(track)
-        assertTrue(xml.contains("<wpt lat="1.214400" lon="-77.278300">"))
+        assertTrue(xml.contains("<wpt lat=\"1.214400\" lon=\"-77.278300\">"))
         assertTrue(xml.contains("<name>Templo de San Juan Bautista</name>"))
         assertTrue(xml.contains("<desc>Monumento nacional</desc>"))
         assertTrue(xml.contains("Iglesia de San Felipe Neri"))
