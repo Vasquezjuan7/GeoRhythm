@@ -1,5 +1,13 @@
 # Registro de Cambios (CHANGELOG)
 
+## [2.2.1] - 2026-11-18
+### Corregido
+- La app vuelve a compilar: comillas sin escapar en `GpxExporter`, `PoiCategory` duplicado, tipos inexistentes en `PoiSearch` y argumentos de `GpsFix` en `WalkSimulator`.
+- Pruebas unitarias de GPX y del formateo imperial corregidas (114 pruebas en verde).
+
+### Añadido
+- APK descargable desde GitHub Releases y sección "Descargar" en el README.
+
 ## [2.2.0] - 2026-11-18
 ### Añadido
 - Soporte multilingüe completo (español e inglés) para turistas internacionales.
